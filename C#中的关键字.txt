@@ -30,3 +30,11 @@
 10.operator运算符重载
 	和c++的运算符重载有些不一样:c++中会默认带入代用此函数的实例
 	而c#中operator运算符重载函数必须声明为public和static，所以就不会像c++那样可以默认带入调用此函数的实例
+
+11. 泛型修饰符:in(逆变) out(协变) 目前只在接口和委托中使用
+	逆变(不正常的转换):基类转换为派生类  Child child = (Child)fathor;
+	协变(正常转换): 派生类转换为基类 Fathor fathor = child; //隐式转换
+	public interface ITest<out T> {}
+	public delegate void MyDelegate<in T>(T param);
+	
+	

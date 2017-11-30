@@ -1,6 +1,6 @@
   1:换 -1:不换 0:相等,不换
 
-
+	第一种写法:
         sortList.Sort(
             (a,b) => 
             {
@@ -12,3 +12,6 @@
                     return 0;
             }
             );
+	
+	第二种写法: 推荐使用中CompareTo比较
+	sortList.Sort((a,b)=>{return a.CompareTo(b)})

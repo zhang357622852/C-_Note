@@ -1,0 +1,29 @@
+
+1.在 2.0 之前的 C# 版本中，声明委托的唯一方法是使用命名方法。  C# 2.0 引入了匿名方法，而在 C# 3.0 及更高版本中，Lambda 表达式取代了匿名方法，作为编写内联代码的首选方式
+
+
+delegate int calculator(int x, int y); //委托类型
+2.命名方法:需要具体的写一个函数方法
+	static void Main()
+        {
+            calculator cal = new calculator(Adding);
+            int He = cal(1, 1);
+            Console.Write(He);
+        }
+	public static int Adding(int x, int y) {return x+y;}
+
+3.匿名方法:
+	static void Main()
+        {
+            calculator cal = delegate(int num1,int num2)
+            {
+                return num1 + num2;
+            };
+            int he = cal(1, 1);
+        }
+4.Lambda:代码更简洁
+	static void Main()
+        {
+            calculator cal = (x, y) => {return x + y};//Lambda表达式，代码简洁
+            int he = cal(1, 1);
+        }
