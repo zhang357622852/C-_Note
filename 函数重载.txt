@@ -1,0 +1,9 @@
+
+函数的重载：只于函数的参数类型/个数/ref/out有关，与返回类型无关
+
+	void Hehe(){}
+	int  Hehe(){} //错误,不是函数重载，返回类型int无法作为函数重载的依据
+	void Hehe(int ii){}
+	void Hehe(int ii, int xx){}
+	void Hehe(float ff){}
+	void Hehe(ref int ii){}
