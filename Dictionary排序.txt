@@ -1,0 +1,35 @@
+
+    public class TestClass
+    {
+        public int index;
+        
+        public TestClass(int tIndex)
+        {
+            this.index = tIndex;
+        }
+    }
+
+public static Dictionary<string, TestClass> testDic = new Dictionary<string, TestClass>();
+
+            testDic.Add("hehe1", new TestClass(1));
+            testDic.Add("hehe2", new TestClass(2));
+            testDic.Add("hehe3", new TestClass(6));
+            testDic.Add("hehe4", new TestClass(7));
+            testDic.Add("hehe5", new TestClass(8));
+            testDic.Add("hehe6", new TestClass(4));
+            testDic.Add("hehe7", new TestClass(3));
+            testDic.Add("hehe8", new TestClass(5));
+
+
+1: .net2.0版本排序:主要利用的是List中的Sort排序函数
+	这种排序我觉得消耗比较大，因为是字典里的复制一篇到List中
+            List<KeyValuePair<string, TestClass>> list = new List<KeyValuePair<string, TestClass>>(testDic); 
+            list.Sort(
+                (a, b) =>
+                {
+                    return a.Value.index.CompareTo(b.Value.index);
+                });
+
+2: .net3.5以上版本中使用Linq的方式(Linq语言集成查询,类似SQL语句)
+	至于这种方式性能如何不太清楚，但是的确是很方便，可以排序可以筛选
+	var dicSort = from temp in testDic orderby temp.Value.index descending select temp;

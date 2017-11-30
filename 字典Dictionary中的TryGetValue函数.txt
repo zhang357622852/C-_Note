@@ -1,0 +1,9 @@
+
+1.Dictionary中的TryGetValue这个函数,算是一种安全方式去取值,通过返回的bool值可以判断是否存在这个键值对   
+	如果没有用这个函数去取相应的键值的话,平常是这样的:先判断是否存在这个键，然后再去操作值
+	    if(obj.testDic.ContainsKey(0))
+            {
+                string value = obj.testDic[0];
+            }
+	而用TryGetValue这个函数就可以做这些事了
+2.听说

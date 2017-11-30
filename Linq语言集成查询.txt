@@ -1,0 +1,37 @@
+1.如下是LINQ的重要高级特性。
+	LINQ（发音link）代表语言集成查询（Language Integrated Query）
+	LINQ是.NET框架的扩展，它允许我们以使用SQL查询数据库的方式来查询数据集合
+	使用LINQ，你可以从数据库、程序对象集合以及XML文档中查询数据
+
+2.两种形式语法:
+	1.方法语法:
+	2.查询语法(推荐使用,类似SQL语句)
+
+
+3.关键字
+	3.1: from 迭代变量名 in 查询的集合名 
+		示例:from tempValue in items
+	3.2: join
+	3.3: let子句接受一个表达式的运算并且把它赋值给一个需要在其他运算中使用的标识符
+		示例: 
+		var groupA=new[]{3,4,5,6};
+        	var groupA=new[]{6,7,8,9};
+        	var someInts=from a in groupA
+                     	     from b in groupB
+                             let sum=a+b         //在新的变量中保存结果
+                             where sum==12
+                             select new{a,b,sum};
+	3.4: where子句根据之后的运算来筛选指定项
+	3.5: orderby子句排序: ascending升序 descending降序
+	3.6: select子句指定所选对象的哪部分应该被select(整个数据项,数据项的一个字段，数据项的几个字段组成的新对象)
+	3.7: group by子句把select的对象根据一些标准进行分组
+		var students = new[]
+            	{
+                	new{LName="Jones",FName="Mary",Age=19,Major="History"},
+                	new{LName="Smith",FName="Bob",Age=20,Major="CompSci"},
+                	new{LName="Fleming",FName="Carol",Age=21,Major="History"},
+            	};
+            	var query = from s in students
+                group s by s.Major;
+
+4.被查找的类型必须是可枚举类型

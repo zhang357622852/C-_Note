@@ -1,0 +1,14 @@
+  1:换 -1:不换 0:相等,不换
+
+
+        sortList.Sort(
+            (a,b) => 
+            {
+                if (a.Value > b.Value)
+                    return 1;
+                else if (a.Value < b.Value)
+                    return -1;
+                else
+                    return 0;
+            }
+            );
