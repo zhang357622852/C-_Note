@@ -4,7 +4,7 @@ interface接口:
 	只要继承此接口的类的可见域里有这个成员就可以了，就算是从基类继承而来的也没事	
 	1.隐式实现：必须用public修饰,就像使用正常的类方法一样,可以添加virtual/abstrace修饰,就是不能用static来修饰
 		public void Hehe() {}
-	2.显示实现: 调用的使用需要转换成接口类型才可以
+	2.显示实现: 调用的时候需要转换成接口类型才可以
 		void IBase.Hehe() {}
 		public void Hehe() {} //和成员方法IBase.Hehe()看上去容易误认为是函数重载，但实际调用的方式不同,而且函数重载依据的参数类型和个数和ref/out
 	
@@ -24,5 +24,5 @@ interface接口:
     			}
 
 
-                    Fathor child = new Child2();
+                    Fathor child = new Child();
                     ((IBase)child).Hehe(); //调用到的是Child.Hehe(),多态性的效果

@@ -22,7 +22,7 @@ public static Dictionary<string, TestClass> testDic = new Dictionary<string, Tes
 
 
 1: .net2.0版本排序:主要利用的是List中的Sort排序函数
-	这种排序我觉得消耗比较大，因为是字典里的复制一篇到List中
+	这种排序我觉得消耗比较大，因为是从字典里复制一篇元素到List中,而且排序好的只要list中，而原来的字典testDic还是没有被排序
             List<KeyValuePair<string, TestClass>> list = new List<KeyValuePair<string, TestClass>>(testDic); 
             list.Sort(
                 (a, b) =>
@@ -31,5 +31,5 @@ public static Dictionary<string, TestClass> testDic = new Dictionary<string, Tes
                 });
 
 2: .net3.5以上版本中使用Linq的方式(Linq语言集成查询,类似SQL语句)
-	至于这种方式性能如何不太清楚，但是的确是很方便，可以排序可以筛选
+	至于这种方式性能如何不太清楚，但是的确是很方便，可以排序可以筛选,代码也简洁
 	var dicSort = from temp in testDic orderby temp.Value.index descending select temp;

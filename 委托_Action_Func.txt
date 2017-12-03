@@ -1,0 +1,20 @@
+
+委托delegate的实质是一个类，所以能传来传去
+　　委托类似于 C++ 函数指针，但它们是类型安全的。
+　　委托允许将方法作为参数进行传递。
+　　委托可用于定义回调方法。
+　　委托可以链接在一起；例如，可以对一个事件调用多个方法。
+　　方法不必与委托签名完全匹配
+
+1.delegate自定义委托类型
+	public delegate int MethodtDelegate(int x, int y);
+
+2.Action和Func是已经定义好的泛型委托,Action是无返回类型的，有参,Func必须有返回类型，有参
+	列举一个两个:
+		public delegate void Action<in T>(T obj);
+		public delegate TResult Func<in T, out TResult>(T arg);
+
+3.predicate:是返回bool型的泛型委托
+	public delegate bool Predicate<T> (T obj)
+
+4.一般用自带的Action和Func就可以解决大多数的回调，还可以自定义一些委托类型

@@ -23,6 +23,7 @@
                              select new{a,b,sum};
 	3.4: where子句根据之后的运算来筛选指定项
 	3.5: orderby子句排序: ascending升序 descending降序
+		var dicSort = from temp in testDic orderby temp.Value.index descending select temp;
 	3.6: select子句指定所选对象的哪部分应该被select(整个数据项,数据项的一个字段，数据项的几个字段组成的新对象)
 	3.7: group by子句把select的对象根据一些标准进行分组
 		var students = new[]

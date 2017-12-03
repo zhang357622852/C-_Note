@@ -16,7 +16,7 @@
 	限制是:
 		1.不可以是静态类，因为要使用特性就必须是可实例化的类
 		2.不可以是abstract抽象类,因为要使用特性就必须是可实例化的类
-    [Test(name="WinMi")]这一句就是调用构成函数实例化对象，而且是在编译时就实例化对象了，比所关联的类更早实例化，所以可以提前得到它的成员
+    [Test(name="WinMi")]这一句就是调用构造函数实例化对象，而且是在编译时就实例化对象了，比所关联的类更早实例化，所以可以提前得到它的成员
 
 2.使用/得到特性的实例
 	TestAttribute obj = (TestAttribute)Attribute.GetCustomAttribute(typeof(AttrTest), typeof(TestAttribute));
