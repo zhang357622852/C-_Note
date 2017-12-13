@@ -1,0 +1,20 @@
+
+1.where用于指定类型约束,可以作为泛型声明中定义的类型参数变量。
+
+2.接口约束:
+	public class MyClass<T> where T: IComparable{}
+
+3.约束:
+	public class MyClass<T, U> where T: class where U: struct {} 
+
+	约束类型必须指定的类作为基类(或者就是类本身), 才能用作该泛型类型的类型参数。
+	private T _CreateForms<T>(string formsName) where T:UIBaseForms
+
+3.where 子句还可以包括构造函数约束。
+	可以使用 new 运算符创建类型参数的实例；但类型参数为此必须受构造函数约束 new() 的约束。new() 约束可以让编译器知道：提供的任何类型参数都必须具有可访问的无参数（或默认）构造函数。例如：
+
+	public class MyGenericClass <T> where T: IComparable, new()
+	{
+		T item = new T();
+	}
+	new() 约束出现在 where 子句的最后
