@@ -1,0 +1,6 @@
+
+1.Activator:动态创建类实例：有时候在写泛型方法时事先不知道要创建哪个类，这时就可以使用这个了
+	_instance =  (T)Activator.CreateInstance(typeof(T), true);
+
+2.new 正常使用
+	MyClass obj = new MyClass();
