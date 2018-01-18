@@ -1,5 +1,5 @@
 
-1.where用于指定类型约束,可以作为泛型声明中定义的类型参数变量。
+1.where用于指定类型约束,作为泛型声明中定义的类型参数变量。
 
 2.接口约束:
 	public class MyClass<T> where T: IComparable{}
