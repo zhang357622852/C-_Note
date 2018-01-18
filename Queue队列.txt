@@ -1,0 +1,11 @@
+
+1.Queue定义: 先进先出的集合(队列)
+
+2.优点:
+	1.能对集合进行顺序处理(先进先出)
+	2.能接受null值,允许重复元素
+
+3.方法
+	Object Dequeue() 出队:移除并返回位于 Queue 开始处的对象。
+	Void Enqueue(object obj) 将对象添加到 Queue 的结尾处。
+	Object Peek() 返回位于 Queue 开始处的对象但不将其移除。
