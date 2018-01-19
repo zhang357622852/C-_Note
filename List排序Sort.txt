@@ -15,3 +15,31 @@
 	
 	第二种写法: 推荐使用中CompareTo比较
 	sortList.Sort((a,b)=>{return a.CompareTo(b)})
+
+	
+	第三种写法: C#里的排序都是用IComparable这个接口,重写CompareTo
+	    public class TestComp : IComparable<TestComp>
+    		{
+        		public int value;
+
+        		public TestComp(int value)
+        		{
+            			this.value = value;
+        		}
+
+        		public int CompareTo(TestComp obj)
+        		{
+            			if (value > obj.value)
+                			return 1;
+            			else if (value < obj.value)
+                			return -1;
+            			else
+                			return 0;
+        		}
+    		}
+
+	   List<TestComp> testList = new List<TestComp>();
+	   list.Add(new TestComp(3));
+           list.Add(new TestComp(4));
+           list.Add(new TestComp(2));
+	   testList.Sort(); //默认使用的是自定义的CompareTo
