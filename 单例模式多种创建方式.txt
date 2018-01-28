@@ -1,0 +1,93 @@
+主要还是要考虑多线程问题
+
+1. 惰性式: 线程不安全,如果两个线程同时GetInstance,有可能创建了两个实例了
+public class Singleton
+{
+        private static Singleton instance;
+
+        private Singleton()
+        {
+        
+        }
+
+        public static Singleton GetInstance()
+        {
+                if(instance==null)
+                {
+                        instance=new Singleton();
+                }
+                return instance;
+        }
+}
+
+2.双重锁方式: 线程安全
+ public sealed class Singleton
+    {
+        static Singleton instance = null;
+        private static readonly object padlock = new object();
+
+        private Singleton()
+        {
+        }
+
+        public static Singleton Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Singleton();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
+    }
+
+3.饿汉式： 线程安全 => 无需自己解决线程安全性问题,CLR会给我们解决，类被加载时，会自动化实例这个类
+public sealed class Singleton
+{
+        private static readonly Singleton instance=new Singleton();
+ 
+        private Singleton()
+        {
+        }
+
+        public static Singleton GetInstance()
+        {
+               return instance;
+        }
+}
+
+4.静态初始化
+ public sealed class Singleton
+    {
+        private static readonly Singleton instance = null;
+        static Singleton()
+        {
+            instance = new Singleton();
+        }
+        private Singleton()
+        {
+        }
+        public static Singleton Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+    }
+评注：
+	依赖公共语言运行库负责处理变量初始化
+	公共静态属性为访问实例提供了一个全局访问点
+	对实例化机制的控制权较少(.NET代为实现)
+	静态初始化是在 .NET 中实现 Singleton 的首选方法
+小注：
+	静态构造函数既没有访问修饰符，C#会自动把他们标记为private，之所以必须标记为private，
+	是为了阻止开发人员写的代码调用它，对它的调用总是由CLR负责的。

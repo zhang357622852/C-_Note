@@ -1,0 +1,31 @@
+饿汉式创建
+
+1.使用new()约束: new的约束只是让编译器在泛型实例化的时候，检查所绑定的泛型T是否有public的无参构造函数
+    public class Singleton<T> where T : new()
+    {
+        private static T _instance = new T();
+
+        public static T Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+    }
+
+2.使用Activator: 这里也要使用new()约束，防止派生类没有public的无参构造函数
+    public class Singleton<T> where T : new()
+    {
+        private static T _instance = Activator.CreateInstance<T>();
+
+        public static T Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+    }
