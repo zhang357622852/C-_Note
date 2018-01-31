@@ -1,0 +1,2 @@
+
+SortedList最合适对一列健/值对 进行排序，在排序时，是对键进行排序，SortedList 是 Hashtable 和 Array 的混合。当使用 Item 索引器属性按照元素的键访问元素时，其行为类似于 Hashtable。当使用 GetByIndex 或 SetByIndex 按照元素的索引访问元素时，其行为类似于 Array。

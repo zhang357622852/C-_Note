@@ -9,7 +9,7 @@
 	protected internal :  同一程序集中的任何代码或其他程序集中的任何派生类都可以访问该类型或成员。
 	
 	方法和属性（function,property）
-	属性和方法默认为private的，可以显示的定义为public、private、protected、internal、或者protected internal 等访问类型。
+	类里的属性和方法默认为private的，可以显示的定义为public、private、protected、internal、或者protected internal 等访问类型。
 
 	接口(interface)
 	接口成员访问修饰符默认为public,且不能显示使用访问修饰符。
