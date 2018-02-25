@@ -20,7 +20,7 @@ public class Singleton
         }
 }
 
-2.双重锁方式: 线程安全
+2.双重锁方式: 线程安全 推荐使用这个吧，只在需要时第一次创建
  public sealed class Singleton
     {
         static Singleton instance = null;
