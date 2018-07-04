@@ -1,0 +1,56 @@
+
+1.IsMatch(String, String)
+	指示 Regex 构造函数中指定的正则表达式在指定的输入字符串中是否找到了匹配项。
+
+2.Match(String, String)	
+	在指定的输入字符串中搜索 Regex 构造函数中指定的正则表达式的第一个匹配项。
+
+3.Matches(String, String)	
+	在指定的输入字符串中搜索正则表达式的所有匹配项。
+
+4.Replace(String, String)	
+	在指定的输入字符串内，使用指定的替换字符串替换与某个正则表达式模式匹配的所有字符串。
+
+5.Split(String, String)	
+	在由 Regex 构造函数指定的正则表达式模式所定义的位置，拆分指定的输入字符串。
+
+6.()这个符号代表提取到Group中的意思
+	string line = "lane=1;speed=30.3mph; speed=20.3mph; acceleration=2.5mph/s";	
+
+	Regex reg = new Regex(@"speed=([\d\.]*)"); //使用() 这里需要注意到*也被包含进来了
+	MatchCollection match = reg.Matches(line);
+
+	for (int i = 0; i < match.Count; i++)
+            {
+		match[i]; //speed=30.3 speed=20.3
+                match[i].Groups[1];//结果是: 30.3  20.3
+		mathch[i].Groups; //Groups[0]:speed=30.3 Groups[0]:speed=20.3
+            }
+	
+	Regex reg = new Regex(@"speed\s*=\s*([\d\.]+)\s*(mph|km/h|m/s)");
+	//解读:
+	
+	//mathch[0]:speed=30.3mph mathch[1]:speed=20.3mph
+	for (int i = 0; i < match.Count; i++)
+            {
+               match[i].Groups[1]; //30.3
+               match[i].Groups[2]; //20.3
+            }
+	
+7.*:匹配前面的子表达式零次或多次 +:匹配前面的子表达式一次或多次 ?:匹配前面的子表达式零次或一次。
+	string line = "lane=1;speed=30.3mph; speed=20.3mph; acceleration=2.5mph/s";
+
+	Regex reg = new Regex(@"speed=([\d\.])");
+	match[0]:speed=3  match[1]:speed=2
+	
+	Regex reg = new Regex(@"speed=([\d\.]*)");
+	match[0]:speed=30.3  match[1]:speed=20.3
+
+  [\d\.]子表达式 *匹配这个表达式零次或多次
+
+8.@:艾特符号
+	Regex reg = new Regex(@"speed=([\d\.])");
+	在这里@是用来取消转义字符的，c#中的字符串字面值包含转移字符
+	例如"\n"会被当做换行符，而如果你就想表达\n这两个字符，那么可以写@"\n"，通常在正则和路径用的多
+	@就是让\这个符号从转义的标志变成普通的字符
+

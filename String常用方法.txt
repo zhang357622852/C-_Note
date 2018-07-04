@@ -1,0 +1,141 @@
+
+1.Trim()、TrimStart()、TrimEnd()的用法
+		这三个方法用于删除字符串头尾出现的某些字符。Trim()删除字符串头部及尾部出现的空格，删除的过程为从外到内，直到碰到一个非空格的字符为止，所以不管前后有多少个连续的空格都会被删除掉。TrimStart()只删除字符串的头部的空格。TrimEnd()只删除字符串尾部的空格。
+
+
+1---》字符串的声明：
+
+　　1、string s=new string(char[] arr)     //根据一个字符数组声明字符串，即将字符字组转化为字符串。
+
+　　2、string s=new string(char r,int i)    //生成 i 个字符 r 的字符串。
+
+2---》字符串常用的静态方法：
+
+　　1、Compare 字符串的比较（按照字典顺序）  
+
+　　　　int result= string.Compare(string str1,string str2); 
+
+　　　　当str1 > str2时，返回1
+
+　　　　当str1 = str2时，返回0
+
+　　　　当str1 < str2时，返回-1
+
+　　　　string.Compare(string str1,string str2,bool ignoreCase)   //忽略大小写比较
+
+　　2、Concat连接方法参数很多，常用的Concat(string str1，string str2);
+
+　　　　string str=string.Concat("w","e"); //str="we";
+
+　　3、Format参数化处理，相当于Console.WriteLine();
+
+　　　　string str=String.Format("今天{0}很热","天气");//str="今天天气很热";
+
+　　4、IsNullOrEmpty判断字符是否为null或者为空，返回值为bool；
+
+　　　　string str1="hahha";　　　　
+
+　　　　bool b1=string.IsNullOrEmpty(str);//b1=false;
+
+　　　　string str2="";
+
+　　　　bool b2=string.IsNullOrEmpty(str2);//b2=true;
+
+　　　　string str3=null;
+
+　　　　bool b3=string.IsNullOrEmpty(str3);//b3=true;
+
+　　5、Join字符串的合并
+
+　　　　string.Join(string str,string[] strArr);//将数组strArr中的内容拼接成一个新的字符串，并在对应数组的每两项间添加分隔符str
+
+　　　　string strs=string.Join(",",string[]{"w","e","r","t"});//strs="w,e,r,t";
+
+3---》字符串常用的实例方法：
+
+　　1、Contains 判断字符串中是否包含某个字符,返回bool值。
+
+　　　　string str="好累呀";
+
+　　　　bool  b=str.Contains("累");//b=true;
+
+　　2、EndsWith和StartsWith  判断是否是已某种字符串开始或者结束
+
+　　　　string str="好大的雨呀";
+
+　　　　bool  b1=str.StartsWith("大");//b1=false;
+
+　　　　bool  b2-str.EndsWith("呀");//b2=true;
+
+　　3、Equals 比较两个字符串是否相等
+
+　　　　string str1="asd";
+
+　　　　string str2="ert";
+
+　　　　bool  b = str1.Equals(str2);  //b=false;
+
+　　　　bool <strName>.Equals(string str, StringComparison.OrdinalIgnoreCase)   //表示不区分大小写
+
+　　 4、IndexOf 和 LastIndexOf  判断字符串第一次出现（IndexOf）和最后一次出现（LastIndexOf  ）的位置，如果没有出现过则返回值为-1
+
+　　　　string str ="今天的雨很大，天很冷";
+
+　　　　int i=str.IndexOf("很"); //i=4;
+
+　　　　int i=str.LastIndexOf("很");//j=8;
+
+　　　　int m=str.IndexOf("小");//m=-1;
+
+　　 5、Replace 字符串(字符也是可以的)替换，返回新的字符串
+
+　　　　string str="好困呀";
+
+　　　　string s=str.Replace("困","精神");//s="好精神呀";
+
+　　 6、Insert 插入
+
+　　　　在字符串的index位置上插入字符，原来的字符依次后移，变成一个新的字符串
+
+　　　　string str="夜深了";
+
+　　　　string s=str.Insert(1,"已经");//  s="夜已经深了"
+　　 7、Remove删除字符串（字符）
+
+　　　　在字符串中移除从startIndex开始，长度为length的字符串，剩下的字符合为一个新的字符串(<strName> = <strName>.Remove(startIndex,length);)
+
+　　　　string str="夜已经深了";
+
+　　　　string s=str.Remove(1,2);//s="夜深了";
+
+　　 8、Split 将字符串<strName>以sep数组中的字符分割，分割后得到的内容存到一个数组中（string[] <strName>.Split(params char[] sep);）
+
+　　　　string str="我，真的、好困；呀";
+
+　　　　string[] s=str.Split(new char(){'，','、','；'});//s=string[]{"我","真的","好困","呀"};
+
+　　 9、Substring 截取字符<str>以index（从0开始）开始截取，并截取lenth个字符(string <str>.Substring(index,lenth))
+
+　　　　string str="还在下雨";
+
+　　　　string s=str.Substring(2,2);//s="下雨";
+
+　　 10、ToCharArray将字符串转化为字符数组（<string>.ToCharArray()）
+
+　　　　　string str="雨已经小了";
+
+　　　　　char[] s=str.ToCharArray();//s=char[]{'雨',"已","经","小","了"};
+
+　　 11、Trim() 出去两边的空格
+
+　　　　  string str="  dd  ";
+
+　　　　  string s=str.Trim();//s="dd";
+
+　　 12、ToUpper（转换为大写）和ToLower（转换为小写）
+
+　　　　　string s="RaSer";
+
+　　　　　string s1=s.ToUpper();//s1="RASER";
+
+　　　　　string s2=s.ToLower();//s2="raser";

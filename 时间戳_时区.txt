@@ -1,0 +1,29 @@
+
+
+1.Unix时间戳：
+	是指格林威治时间1970年01月01日00时00分00秒起至现在的总秒数。
+
+2.每个时区的时间戳起始时间是不一样的
+	北京时间1970年01月01日08时00分00秒
+	每个时区的本地时间戳都是以本地时间戳起始为基准的
+
+
+3.时间戳转换DateTime
+	long unixTimeStamp = 1478162177; //本地时区时间戳
+	System.DateTime time = System.DateTime.MinValue;
+        System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1, 0, 0, 0));
+        time = startTime.AddSeconds(unixTimeStamp);
+
+4.DateTime转换时间戳
+	System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1, 0, 0, 0));
+	long timeStamp = (long)(DateTime.Now - startTime).TotalSeconds; // 相差秒数
+
+5.时区计算:
+	A地区时间=已知时区的时间-（已知时间地区的时区-A地区的时区）
+	东正数，西负数 : 北京东8区+8
+
+	例子:已知北京时间5月1日12:00,求纽约(西5区)时间:
+		纽约时间 = 12:00-(8-(-5))= 4月30日23:00
+		
+
+

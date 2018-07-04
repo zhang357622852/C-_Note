@@ -1,0 +1,13 @@
+
+1.ÅĞ¶Ï×Ö·û´®ÖĞÊÇ·ñ´æÔÚ´óĞ´
+	string str = "GameConfigGoto";
+
+	System.Text.RegularExpressions.Regex.IsMatch(str, "[A-Z]")
+	Regex: ÕıÔò±í´ïÊ½
+	Match: Æ¥Åä
+
+2.ÅĞ¶Ï×Ö·ûÊÇ·ñÊÇ´óĞ´
+
+	char hehe = 'A';
+      	bool isUp = hehe >= 'A' && hehe <= 'Z' ? true : false;
+	
