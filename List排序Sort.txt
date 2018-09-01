@@ -13,7 +13,7 @@
             }
             );
 	
-	第二种写法: 推荐使用中CompareTo比较
+	第二种写法: 推荐使用中CompareTo比较 默认递增
 	sortList.Sort((a,b)=>{return a.CompareTo(b)})
 
 	
