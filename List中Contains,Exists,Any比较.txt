@@ -1,0 +1,49 @@
+
+List<T>中对比Contains, Exists, Any之间的优缺点
+
+	在List<T>中，Contains, Exists, Any都可以实现判断元素是否存在。
+
+	1.性能方面：Contains 优于 Exists 优于 Any
+
+	2.使用
+	List<int> list = new List<int>(){1,2,3};
+
+	int num = 3;
+
+	list.Contains(num);
+
+	list.Exists(i=>i==num);
+
+	list.Any(i=>i==num);
+
+
+在开发过程中可以根据实际情况进行选择，当list中数据量不大时使用Exists代码更简洁易懂；数据量大时推荐使用Contains；不推荐使用Any。
+
+
+下面的代码对比就能看出为啥数据量不大的时候推荐Exists了。
+
+class ITEM_GIDComparer : IEqualityComparer<T>
+    {
+        public bool Equals(T orl1, T orl2)
+         {
+             if (orl1==null)
+             {
+                 return orl2 == null;
+             }
+
+             return orl1.ITEM_GID == orl2.ITEM_GID;
+         }
+ 
+        public int GetHashCode(T orl)
+         {
+             if (orl == null)
+                 return 0;
+
+             return orl.ITEM_GID.GetHashCode();
+         } 
+    }
+
+    orlclst.Contains(orlc, new ITEM_GIDComparer())
+
+    //Exists一行代码就可以实现上面的功能
+    orlclst.Exists(x=>x.ITEM_GID==orlc.ITEM_GID)

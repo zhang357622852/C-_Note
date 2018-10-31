@@ -1,0 +1,30 @@
+
+char的ASCII码值=65279，显示是一个空字符
+
+	char c = " "
+
+	if (c == 65279)
+
+问题：文件读取的第一行的第一个字符不正确 
+原因：UTF8+BOM文件格式读取的第一个字符的ASCII码为65279 
+解决：
+	reader = new BufferedReader(new InputStreamReader(in, cs));
+
+
+	String line = reader.readLine();
+
+	
+line = line.trim();
+
+	
+// UTF8+BOM文件格式兼容，第一个字符的ASCII码为65279
+	
+// BOM是Byte-Order Mark 在文件前3个字节加上了EE,BB,BF
+
+	
+if(line.charAt(0) == 65279)
+	{
+    
+	   line = line.substring(1);
+	
+}

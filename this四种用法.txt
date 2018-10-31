@@ -1,0 +1,54 @@
+
+用法一：this代表当前类的实例对象
+
+    public class Test
+    {
+        private string scope = "全局变量";
+
+        public string getResult()
+        {
+            string scope = "局部变量";
+
+　　　　　　// this代表Test的实例对象
+　　　　　　// 所以this.scope对应的是类内的全局变量
+　　　　　　// scope对应的是getResult方法内的局部变量
+            return this.scope + "-" + scope;
+        }
+    }
+
+方法二：this串联构造函数
+
+    public class Test
+    {
+        public Test()
+        {
+            Console.WriteLine("无参构造函数");
+        }
+
+        // this()对应无参构造方法Test()
+　　　　// 先执行Test()，后执行Test(string text)
+        public Test(string text) : this()
+        {
+            Console.WriteLine(text);
+            Console.WriteLine("有参构造函数");
+        }
+    }
+
+方法三：为原始类型扩展方法
+	特点：1.静态类 2.静态方法 3.第一个参数前加this
+
+	例如：
+	public static List<T> ToList<T>(this string Json)
+	就是为this对应的string类型扩展类ToList()方法，调用方式 strJson.ToList();
+
+	public static class Extends
+	{
+		public static List<T> ToList<T>(this string Json)
+        	{
+            		return Json == null ? null : JsonConvert.DeserializeObject<List<T>>(Json);
+        	}
+	}
+
+方法四: 索引器（基于索引器封装EPList，用于优化大数据下频发的Linq查询引发的程序性能问题，通过索引从list集合中查询数据）
+
+
