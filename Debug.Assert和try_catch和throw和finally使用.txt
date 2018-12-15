@@ -1,0 +1,58 @@
+
+1.在c#中编译成release版本时，Debug.Assert不会产生任何代码，而try/catch有代码产生，运行时有开销
+
+
+2.try/catch finally throw
+  try
+  { 
+	// 引起异常的语句(被除数为0...)
+
+	// TestThrow()在这里抛出异常给catch捕获
+	TestThrow();
+  }
+  catch(Exception e1)
+  {
+	// 捕获异常
+  }
+  catch(Exception e2)
+  {
+	// 可能有多个异常，可以由多个catch捕获
+  }
+  finally
+  {
+	// 无论是否有异常，都会执行这里的代码
+  }
+
+  
+
+  private void TestThrow()
+  {
+	// 通过throw抛出异常
+	throw new ArgumentNullException("我抛出了一个异常了");
+  }
+
+
+3.Debug.Assert 断言
+
+	Assert用于检查不应该发生情况，用来帮助开发人员对问题的快速定位。异常处理用于对程序发生异常情况的处理，增强程序的健壮性、容错性，减少程序使用中对用户不有好的行为，不让(通常也不必)用户知道发生了什么错误
+
+	public static bool ParseData(string xmlPath, MyDataCollection container)
+	{
+		Debug.Assert(container==null, "container argument is null");
+		
+		XmlDocument xmlDoc = new XmlDocument();
+
+		try
+		{
+			xmlDoc.Load(xmlPath);
+		}
+		catch (FileNotFoundException)
+		{
+		}
+		catch (XmlException)
+		{
+		}
+	}
+
+	我们需要在调用的时候，确保参数container不为null。如果发布成公共类库，那么应该做异常处理，确保第三方错误调用的时候，知道问题在哪
+	
