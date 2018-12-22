@@ -110,10 +110,24 @@
 
 　　 8、Split 将字符串<strName>以sep数组中的字符分割，分割后得到的内容存到一个数组中（string[] <strName>.Split(params char[] sep);）
 
-　　　　string str="我，真的、好困；呀";
+　　　　	string str="我，真的、好困；呀";
 
-　　　　string[] s=str.Split(new char(){'，','、','；'});//s=string[]{"我","真的","好困","呀"};
+　　　　	string[] s=str.Split(new char(){'，','、','；'});//s=string[]{"我","真的","好困","呀"};
+	
+	8.1 String.Split(Char[],StringSplitOptions)
 
+		string str = "aaatbbscctddt";
+		
+		string []strArray = str.Split(new char[]{'t',StringSplitOptions.RemoveEmptyEntries}); //去除空元素(result :"aaa" "bbscc" "dd")
+
+		string []strArray = str.Split(new char[]{'t',StringSplitOptions.None}); //保留空元素(result :"aaa" "bbscc" "dd" “”) 
+	
+	8.2 String.Split(Char[],Int32)
+	
+		string str = "aaatbbscctdd";
+
+		string []strArray = str.Split(new char[]{'t',2}); //只切割成2份(result :"aaa" "bbscctdd");
+		
 　　 9、Substring 截取字符<str>以index（从0开始）开始截取，并截取lenth个字符(string <str>.Substring(index,lenth))
 
 　　　　string str="还在下雨";
@@ -126,7 +140,7 @@
 
 　　　　　char[] s=str.ToCharArray();//s=char[]{'雨',"已","经","小","了"};
 
-　　 11、Trim() 出去两边的空格
+　　 11、Trim() 除去两边的空格
 
 　　　　  string str="  dd  ";
 
