@@ -1,0 +1,53 @@
+
+1.New关键字
+
+	创建对象和调用构造函数。是实例化一个类最常见的方式。
+
+	ClassA obj = new ClassA();
+
+2.Activator 
+
+	用以在本地或从远程创建对象类型，或获取对现有远程对象的引用。其 CreateInstance 方法创建在程序集中定义的类型的实例。
+
+	两种方法区别仅为：创建无参数的构造方法和创建有参数的构造函数。
+		1. Activator.CreateInstance (Type)
+		2. Activator.CreateInstance (Type, Object[])
+
+	string className = "ClassA";
+	ClassA classA =  Activator.CreateInstance(Type.GetType(className)) as ClassA;
+	
+3.Assembly
+
+	表示一个程序集，它是一个可重用、无版本冲突并且可自我描述的公共语言运行库应用程序构造块。该类可以加载程序集、浏览程序集的元数据和构成部分、发现程序集中包含的类型以及创建这些类型的实例。
+
+	加载程序集的推荐方式是使用 Load 方法。GetType 方法可用于在程序集中搜索特定类型。CreateInstance 方法可用于在程序集中搜索和创建类型的实例。
+
+
+	Assembly asse = Assembly.GetExecutingAssembly();
+	Type[] types = asse.GetTypes();
+    	foreach (Type t in types)
+	{
+		// 是否是派生自Script
+		if (t.IsSubclassOf(typeof(Script)))
+		{
+			asse.CreateInstance(t.Name)
+		}
+	}
+
+4.总结
+	最快的是new
+	其次Activator
+	最后Assembly
+
+	性能参考地址: 
+		https://www.cnblogs.com/liuning8023/archive/2012/07/01/2572073.html
+		https://www.cnblogs.com/Leo_wl/p/5666015.html
+     
+5.注意
+	因此，若想动态实例化一个类，根据你的实际情况，尽量将需要实例化的类放在同一个程序集
+
+	在使用这个的时候Activator，我加了个人命名空间，会报错，没用的话，正常使用，加了个人命名空间难道就是不同程序集了？（有空研究下吧）
+
+
+
+

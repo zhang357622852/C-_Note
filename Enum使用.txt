@@ -1,0 +1,26 @@
+
+public enum OpType
+{
+   AddNew,
+   Update,
+   Delete,
+}
+
+1.Parse 通过枚举元素名称得到对应的枚举值
+
+  int value = (int)Enum.Parse(typeof(OpType), "Delete"); //2
+
+2.GetNames 获取指定枚举的所有元素名称
+
+ string[] names = Enum.GetNames(typeof(OpType)); // "AddNew","Update", "Delete"
+
+3.GetName 获取指定值的枚举名称
+
+ string name = Enum.GetName(typeof(OpType), 0); // "AddNew"
+
+4.GetValues 获取指定枚举的所有枚举值
+
+
+5.IsDefined 指定枚举是否有指定值的枚举
+
+bool ret = Enum.IsDefined(typeof(OpType), 1) // 1对应的是Update,ret=true

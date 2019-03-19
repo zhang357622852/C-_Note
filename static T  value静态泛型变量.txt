@@ -1,0 +1,32 @@
+
+1.对于泛型类的声明
+
+	其中使用类型参数的构造类型，比如List<T>被称为开放构造类型(open constructed type)
+
+	而不使用类型参数的构造类型，例如List<int>被称为封闭构造类型(closed constructed type)。
+
+	特别要强调的是不同类型参数的封闭构造类型之间是不共享静态成员变量的
+
+2.例子：
+
+	public class List<T>
+	{
+		private T mValue;
+		private static int mCount = 0;
+
+		public List()
+		{
+			mCount++;
+		}
+	}
+
+	List<int> list1 = new List<int>(); //mCount = 1
+	List<int> list2 = new List<int>(); //mCount = 2
+
+	List<double> list3 = new List<int>(); //mCount = 1
+
+
+	list1和list2泛型是同种类型的，共用静态mCount
+	
+	list3与list1/list2不同类型,不共用mCount，另外用一个mCount
+	
